@@ -1,11 +1,17 @@
 import React, {Component} from 'react';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css'
+import NavBar from "./components/layout/NavBar";
+import Dashboard from "./components/layout/Dashboard";
 
 class App extends Component {
     render() {
-        return <div className="App">
-            <h1>Test</h1>
-        </div>
+        return (
+            <div className="App">
+                <NavBar/>
+                <div className="container"><Dashboard/></div>
+            </div>
+        );
     }
 }
 
