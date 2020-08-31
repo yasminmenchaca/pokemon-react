@@ -13,11 +13,11 @@ class App extends Component {
         return (
             <Router>
                 <div className="App">
-                    <NavBar />
+                    <NavBar/>
                     <div className="container">
                         <Switch>
-                            <Route exact path="/" component={Dashboard} />
-                            <Route exact path="/pokemon/:pokemonIndex" component={Pokemon} />
+                            <Route exact path="/" component={Dashboard}/>
+                            <Route exact path="/pokemon/:pokemonIndex" component={Pokemon}/>
                         </Switch>
                     </div>
                 </div>
