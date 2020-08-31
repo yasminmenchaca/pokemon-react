@@ -24,7 +24,7 @@ class PokemonList extends Component {
                             url={pokemon.url}
                         />
                     ))}
-                </div>) : (<h1>Loading Pokemon...</h1>)}
+                </div>) : ('')}
             </React.Fragment>
         );
     }
