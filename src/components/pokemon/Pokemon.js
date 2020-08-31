@@ -104,10 +104,10 @@ class Pokemon extends Component {
             return false;
         })
             .map(stat => {
-                return `${stat.effort} ${stat.stat.name}`.toLowerCase()
+                return `${stat.effort} ${stat.stat.name.toLowerCase()
                     .split('-')
                     .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-                    .join(' ');
+                    .join(' ')}`;
             }).join(', ');
 
         await axios.get(pokemonSpeciesUrl).then(res => {
@@ -166,7 +166,7 @@ class Pokemon extends Component {
 
     render() {
         return (
-            <div className="col text-capitalize">
+            <div className="col">
                 <div className="card">
                     <div className="card-header">
                         <div className="row">
@@ -176,7 +176,7 @@ class Pokemon extends Component {
                             <div className="col-7">
                                 <div className="float-right">
                                     {this.state.types.map(type => (
-                                        <span key={type} className='badge-pill badge mr-1'
+                                        <span key={type} className='badge-pill badge mr-1 text-capitalize'
                                               style={{backgroundColor: `#${TYPE_COLORS[type]}`, color: 'white'}}>
                                             {type}
                                         </span>
@@ -191,7 +191,7 @@ class Pokemon extends Component {
                                 <img src={this.state.imageUrl} className='card-img-top rounded mx-auto mt-2'/>
                             </div>
                             <div className="col-md-9">
-                                <h4 className='mx-auto'>{this.state.name}</h4>
+                                <h4 className='mx-auto text-capitalize'>{this.state.name}</h4>
                                 {/*HP PROGRESS BAR */}
                                 <div className="row align-items-center">
                                     <div className="col-12 col-md-3">
@@ -298,6 +298,129 @@ class Pokemon extends Component {
                                                 <small>{this.state.stats.specialDefense}</small>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {/*Pokemon description*/}
+                            <div className="row mt-1">
+                                <div className="col">
+                                    <p className='p-2'>{this.state.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div className="card-body">
+                        <h5 className="card-title text-center">Profile</h5>
+                        <div className="row">
+                            <div className="col-md-6">
+                                {/*height*/}
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <h6 className='float-right'>
+                                            Height:
+                                        </h6>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <h6 className="float-left">
+                                            {this.state.height}m
+                                        </h6>
+                                    </div>
+                                </div>
+                                {/*Weight*/}
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <h6 className='float-right'>
+                                            Weight:
+                                        </h6>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <h6 className="float-left">
+                                            {this.state.weight}kg
+                                        </h6>
+                                    </div>
+                                </div>
+                                {/*Catch Rate*/}
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <h6 className='float-right'>
+                                            Catch Rate:
+                                        </h6>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <h6 className="float-left">
+                                            {this.state.catchRate}%
+                                        </h6>
+                                    </div>
+                                </div>
+                                {/*gender ratio*/}
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <h6 className='float-right'>
+                                            Gender Ratio:
+                                        </h6>
+                                    </div>
+                                    <div className="col-6">
+                                        <div className="progress">
+                                            <div
+                                                className="progress-bar"
+                                                role="progressbar"
+                                                style={{
+                                                    width: `${this.state.genderRatioFemale}%`,
+                                                    backgroundColor: '#c2185b'
+                                                }}
+                                                aria-valuenow="15"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100"
+                                            >
+                                                <small>{this.state.genderRatioFemale}</small>
+                                            </div>
+                                            <div
+                                                className="progress-bar"
+                                                role="progressbar"
+                                                style={{
+                                                    width: `${this.state.genderRatioMale}%`,
+                                                    backgroundColor: '#1976d2'
+                                                }}
+                                                aria-valuenow="30"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100"
+                                            >
+                                                <small>{this.state.genderRatioMale}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="row">
+                                    {/*egg groups*/}
+                                    <div className="col-6">
+                                        <h6 className="float-right">Egg Groups:</h6>
+                                    </div>
+                                    <div className="col-6">
+                                        <h6 className="float-left">{this.state.eggGroup} </h6>
+                                    </div>
+                                    {/*hatch steps*/}
+                                    <div className="col-6">
+                                        <h6 className="float-right">Hatch Steps:</h6>
+                                    </div>
+                                    <div className="col-6">
+                                        <h6 className="float-left">{this.state.hatchSteps}</h6>
+                                    </div>
+                                    {/*abilities*/}
+                                    <div className="col-6">
+                                        <h6 className="float-right">Abilities:</h6>
+                                    </div>
+                                    <div className="col-6">
+                                        <h6 className="float-left">{this.state.abilities}</h6>
+                                    </div>
+                                    {/*EVs*/}
+                                    <div className="col-6">
+                                        <h6 className="float-right">EVs:</h6>
+                                    </div>
+                                    <div className="col-6">
+                                        <h6 className="float-left">{this.state.evs}</h6>
                                     </div>
                                 </div>
                             </div>
