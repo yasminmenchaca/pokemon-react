@@ -44,7 +44,8 @@ class Pokemon extends Component {
         genderRatioMale: '',
         genderRatioFemale: '',
         evs: '',
-        hatchSteps: ''
+        hatchSteps: '',
+        progressColor: '#DD3444'
     };
 
     async componentDidMount() {
@@ -86,6 +87,7 @@ class Pokemon extends Component {
         const height = (pokemonRes.data.height) / 10;
         const weight = (pokemonRes.data.weight) / 10;
         const types = pokemonRes.data.types.map((type) => type.type.name);
+        const progressColor = `${TYPE_COLORS[types[types.length - 1]]}`;
 
         const abilities = pokemonRes.data.abilities
             .map(ability => {
@@ -157,6 +159,7 @@ class Pokemon extends Component {
                 specialAttack,
                 specialDefense
             },
+            progressColor,
             height,
             weight,
             abilities,
@@ -201,7 +204,10 @@ class Pokemon extends Component {
                                         <div className="progress">
                                             <div
                                                 className="progress-bar" role='progressBar'
-                                                style={{width: `${this.state.stats.hp}%`}}
+                                                style={{
+                                                    width: `${this.state.stats.hp}%`,
+                                                    backgroundColor: `#${this.state.progressColor}`
+                                                }}
                                                 aria-valuenow='25'
                                                 aria-valuemin='0'
                                                 aria-valuemax='100'>
@@ -219,7 +225,10 @@ class Pokemon extends Component {
                                         <div className="progress">
                                             <div
                                                 className="progress-bar" role='progressBar'
-                                                style={{width: `${this.state.stats.attack}%`}}
+                                                style={{
+                                                    width: `${this.state.stats.attack}%`,
+                                                    backgroundColor: `#${this.state.progressColor}`
+                                                }}
                                                 aria-valuenow='25'
                                                 aria-valuemin='0'
                                                 aria-valuemax='100'>
@@ -237,7 +246,10 @@ class Pokemon extends Component {
                                         <div className="progress">
                                             <div
                                                 className="progress-bar" role='progressBar'
-                                                style={{width: `${this.state.stats.defense}%`}}
+                                                style={{
+                                                    width: `${this.state.stats.defense}%`,
+                                                    backgroundColor: `#${this.state.progressColor}`
+                                                }}
                                                 aria-valuenow='25'
                                                 aria-valuemin='0'
                                                 aria-valuemax='100'>
@@ -255,7 +267,10 @@ class Pokemon extends Component {
                                         <div className="progress">
                                             <div
                                                 className="progress-bar" role='progressBar'
-                                                style={{width: `${this.state.stats.speed}%`}}
+                                                style={{
+                                                    width: `${this.state.stats.speed}%`,
+                                                    backgroundColor: `#${this.state.progressColor}`
+                                                }}
                                                 aria-valuenow='25'
                                                 aria-valuemin='0'
                                                 aria-valuemax='100'>
@@ -273,7 +288,10 @@ class Pokemon extends Component {
                                         <div className="progress">
                                             <div
                                                 className="progress-bar" role='progressBar'
-                                                style={{width: `${this.state.stats.specialAttack}%`}}
+                                                style={{
+                                                    width: `${this.state.stats.specialAttack}%`,
+                                                    backgroundColor: `#${this.state.progressColor}`
+                                                }}
                                                 aria-valuenow='25'
                                                 aria-valuemin='0'
                                                 aria-valuemax='100'>
@@ -291,7 +309,10 @@ class Pokemon extends Component {
                                         <div className="progress">
                                             <div
                                                 className="progress-bar" role='progressBar'
-                                                style={{width: `${this.state.stats.specialDefense}%`}}
+                                                style={{
+                                                    width: `${this.state.stats.specialDefense}%`,
+                                                    backgroundColor: `#${this.state.progressColor}`
+                                                }}
                                                 aria-valuenow='25'
                                                 aria-valuemin='0'
                                                 aria-valuemax='100'>
